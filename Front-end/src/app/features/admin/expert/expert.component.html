@@ -1,0 +1,34 @@
+<app-table
+  title="experto"
+  [dataService]="es"
+  [fields]="expertFields"
+  folderImage="experts">
+</app-table>
+
+<!-- <app-table
+  [data]="experts"
+  [fields]="expertFields"
+  [total]="total"
+  [offset]="offset"
+  [limit]="limit"
+  [currentPage]="currentPage"
+  [lastPage]="lastPage"
+  (pageChange)="loadExperts($event)"
+  (addAction)="addExpert()"
+  (viewAction)="viewExpert($event)"
+  (editAction)="editExpert($event)"
+  (deleteAction)="deleteExpert($event)"
+  >
+</app-table>
+
+<app-modal 
+    title="experto"
+    url="experts"
+    [modalMode]="modalMode"
+    [model]="expert"
+    [fields]="expertFields"
+    primaryKey="name"
+    (saveChanges)="saveChanges($event)"
+    (deleteItem)="confirmDelete()"
+    (closeModal)="closeModal()">
+</app-modal> -->

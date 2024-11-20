@@ -1,0 +1,101 @@
+<div class="modal" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-4" id="exampleModalLabel">{{ getModalTitle() }}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="modalMode !== 'delete'">
+            <form [formGroup]="modelForm">
+              <div class="" *ngFor="let field of fields">
+                <label class="form-label badge text-bg-success">{{ field.label }}</label>
+                
+                <input 
+                  *ngIf="field.type === 'text'" 
+                  [type]="field.type" 
+                  class="form-control form-control-sm" 
+                  [formControlName]="field.name"
+                  >
+                <input 
+                  *ngIf="field.type === 'email'" 
+                  [type]="field.type" 
+                  class="form-control form-control-sm" 
+                  [formControlName]="field.name"
+                  >
+
+                <input 
+                  *ngIf="field.type === 'number'" 
+                  [type]="field.type" 
+                  class="form-control form-control-sm" 
+                  [formControlName]="field.name"
+                  >
+                
+                <textarea 
+                  *ngIf="field.type === 'textarea'" 
+                  class="form-control form-control-sm" 
+                  [formControlName]="field.name" 
+                  style="field-sizing: content; resize: none"></textarea>
+                
+                  
+                <div *ngIf="field.type === 'file'">
+                  <input
+                    *ngIf="modalMode !== 'view'"
+                    [type]="field.type"
+                    class="form-control form-control-sm"
+                    (change)="onFileSelected($event)"
+                    >
+                    
+                  <img
+                    *ngIf="(selectedImageUrl || model[field.name]) && modalMode !== 'add'"
+                    [src]="selectedImageUrl || ('http://localhost:3000/images/'+folderImage+'/' + model[field.name])"
+                    class="img-fluid"
+                    alt="{{ model[field.name] }}">
+                </div>
+
+                <div *ngIf="field.multiple && field.type === 'select'">
+                  <app-dropdown
+                  [model]="model"
+                  [modalMode]="modalMode"
+                  [relatedItems]="relatedData[field.name]"
+                  label="expertos"
+                  displayField="name"
+                  (selectionChanged)="onSelectionChanged($event)">
+                </app-dropdown>
+                </div>
+
+                <div *ngIf="!field.multiple && field.type === 'select'">
+                  <select class="{{modalMode !== 'view' ? 'form-select':'form-control'}} form-select-sm" [formControlName]="field.name">
+                    <option [value]="null" disabled hidden>Seleccionar {{ field.label | lowercase }}</option>
+                    <option *ngFor="let item of relatedData[field.name]" [value]="item.id" selected="{{item.selected}}">{{ item.name }}</option>
+                  </select>
+                  
+                </div>
+
+                <div class="badge text-bg-danger mt-2 w-100 text-start" [hidden]="modelForm.get(field.name)?.valid || modelForm.get(field.name)?.pristine">
+                  <small class="d-block py-1" *ngIf="modelForm.get(field.name)?.hasError('required')">Este campo es requerido.</small>
+                  <small class="d-block py-1" *ngIf="modelForm.get(field.name)?.hasError('minlength')">Debe tener al menos {{ modelForm.get(field.name)?.errors?.['minlength'].requiredLength }} caracteres.</small>
+                  <small class="d-block py-1" *ngIf="modelForm.get(field.name)?.hasError('maxlength')">Debe tener como máximo {{ modelForm.get(field.name)?.errors?.['maxlength'].requiredLength }} caracteres.</small>
+                  <small class="d-block py-1" *ngIf="modelForm.get(field.name)?.hasError('email')">Por favor, introduce un correo electrónico válido.</small>
+                  <small class="d-block py-1" *ngIf="modelForm.get(field.name)?.hasError('pattern')">Formato inválido, solo se permiten números.</small>
+                </div>
+              </div>
+              
+            </form>
+          </div>
+          
+          <div *ngIf="modalMode === 'delete'">
+            <p>¿Estás seguro de que deseas eliminar <strong>{{ model[primaryKey] }}</strong>?</p>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button *ngIf="modalMode === 'edit' || modalMode === 'add'" type="button" class="btn btn-primary" (click)="onSave()" [disabled]="modelForm.invalid" >Guardar cambios</button>
+          <button *ngIf="modalMode === 'delete'" type="button" class="btn btn-danger" (click)="onDelete()">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-toast></app-toast>

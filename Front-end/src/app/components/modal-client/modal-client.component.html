@@ -1,0 +1,33 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ title }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <div class="pb-3">
+              <img [src]="imageSrc" alt="" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div *ngFor="let field of fields">
+              <label class="form-label badge text-bg-success fs-6">{{ field.label }}</label>
+              <p *ngIf="field.key !== 'category'">{{ data[field.key] ? data[field.key] : 'No especificado.' }}</p>
+              <p *ngIf="field.key === 'category'">{{ data[field.key]?.name ? data[field.key]?.name : 'No especificado.' }}</p>
+            </div>
+            <label *ngIf="data.experts" class="form-label badge text-bg-success fs-6">Expertos</label>
+            <div *ngIf="data.experts" class="d-flex gap-2 flex-wrap">
+              <div *ngFor="let expert of data.experts" class="shadow rounded-3 w-25">
+                <img src="http://localhost:3000/images/experts/{{ expert?.image }}" alt="Expert Image" class="img-fluid rounded-3">
+                <p class="text-center px-2 m-auto">{{ expert?.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

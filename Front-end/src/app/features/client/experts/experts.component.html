@@ -1,0 +1,38 @@
+<div class="d-flex flex-column min-vh-100">
+    <app-navbar></app-navbar>
+
+    <main class="container-fluid flex-grow-1 px-1 px-sm-5 pb-4">
+        <div class="row">
+            <div class="col text-center py-4">
+                <h1>Conoce a los expertos</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 d-flex justify-content-center flex-wrap gap-4">
+                <div class="card-custom" *ngFor="let expert of experts">
+                  <div class="wrapper">
+                    <img src="http://localhost:3000/images/experts/{{ expert?.image }}" alt="" class="cover-image">
+                  </div>
+                  <h3 class="title fs-4">{{ expert?.name }}</h3>
+                  <div class="character">
+                      <p>{{ expert?.expertise_area }}</p>
+                      <p>
+                        <i class="bi bi-telephone-outbound-fill"></i> {{ expert?.contact}}
+                      </p>
+                  </div>
+                </div>
+            </div>
+            
+            <div class="col-12 pt-4">
+                <app-pagination 
+                    [currentPage]="currentPage"
+                    [lastPage]="lastPage"
+                    [offset]="offset"
+                    [limit]="limit"
+                    [total]="total"
+                    (pageChange)="loadExperts($event)">
+                </app-pagination>
+            </div>
+        </div>
+    </main>
+</div>

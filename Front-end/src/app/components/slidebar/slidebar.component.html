@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg h-100">
+    <div class="container-fluid h-100 d-block d-lg-flex flex-column align-items-start overflow-hidden">
+        <div class="d-flex justify-content-between">
+            <div class="lh-1 fs-4 m-md-0">
+                <p class="m-0 fw-bold">
+                    <i class="bi bi-feather"></i>
+                    Saber ancestral
+                </p>
+                <p class="fs-6 m-0 text-secondary">administración</p>
+            </div>
+            <button class="navbar-toggler text-bg-success shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-5 fw-bold"></i>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse w-100" id="navbarNav">
+            <ul class="nav nav-pills flex-column w-100 h-100">
+                <hr>
+                <li class="nav-item">
+                    <a class="btn w-100 border-0 text-start"
+                        routerLink="plants"
+                        routerLinkActive="btn-success fw-bold">
+                        <i class="bi bi-feather2"></i> Plantas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn w-100 border-0 text-start"
+                        routerLink="experts"
+                        routerLinkActive="btn-success fw-bold">
+                        <i class="bi bi-person-bounding-box"></i>
+                        Expertos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn w-100 border-0 text-start"
+                        routerLink="categories"
+                        routerLinkActive="btn-success fw-bold">
+                        <i class="bi bi-tags"></i>
+                        Categorías
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a class="btn btn-danger w-100 mt-2 mt-md-0" (click)="onLogout()">
+            <i class="bi bi-door-closed-fill"></i>
+            Salir
+        </a>
+    </div>
+</nav>

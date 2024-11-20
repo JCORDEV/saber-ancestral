@@ -1,0 +1,30 @@
+*{
+    --color-tertiary: #ffbf00;
+}
+
+.nav-link{
+    border: transparent dashed 2px;
+    border-radius: 0.375rem;
+}
+.nav-link:hover{
+    background-color: #067c005f !important;
+    border: #067c00 dashed 2px;
+    /* border-top: 0; */
+    /* text-decoration: line-through #e39921; */
+    /* box-shadow: #e39921 0px 1.5px 1px 0px; */
+}
+.nav-link.active:hover {
+    background-color: #067c00 !important;
+}
+.more{
+    border-radius: 5rem ;
+    background-color: #ffc4004a;
+    border: var(--color-tertiary) solid 1px;
+    color: var(--color-tertiary);
+    /* box-shadow: inset #067000 5px 3px 15px 1px; */
+}
+
+.active{
+    background-color: #067c00 !important;
+    border-radius: 0.375rem;
+}

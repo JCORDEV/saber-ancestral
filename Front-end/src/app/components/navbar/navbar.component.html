@@ -1,0 +1,75 @@
+<div class="container-fluid d-none d-lg-block " style="background-color: #12360e; color: #fff; font-size: small;">
+    <div class="row">
+      <div class="col col-sm-9 d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ps-sm-5 gap-3">
+        <p class="m-0 p-2"><i class="bi bi-clock"></i> Abierto de 8am. a  6pm.</p>
+        <p class="m-0 p-2"><i class="bi bi-envelope-open"></i> example&#64;gmail.com</p>
+        <p class="m-0 p-2"><i class="bi bi-telephone-outbound-fill"></i> +57 315 674 9584</p>
+      </div>
+      <div class="col col-sm-3 border-2 border-start d-flex align-items-center justify-content-center justify-content-lg-start gap-3" style="background-color: #e39921;">
+        <i class="bi bi-facebook"></i>
+        <i class="bi bi-twitter-x"></i>
+        <i class="bi bi-youtube"></i>
+        <i class="bi bi-whatsapp"></i>
+      </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg" style="background-color: #1b8b15;border-bottom: #e39921 solid 2px;">
+    <div class="container-fluid justify-content-between px-sm-5">
+      <a class="navbar-brand" routerLink="">
+        <span class="fs-4 fw-bold" style="color: #fff;">
+            <i class="bi bi-feather" style="color: var(--color-tertiary);"></i>
+            Saber ancestral
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> 
+      <div class="offcanvas offcanvas-end" style="background-color: #1b8b15;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header" href="#">
+          <a class="offcanvas-title navbar-brand" id="offcanvasNavbarLabel" routerLink="">
+            <span class="fs-4 fw-bold" style="color: #fff;">
+                <i class="bi bi-feather" style="color: var(--color-tertiary);"></i>
+                Saber ancestral
+            </span>
+          </a>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column justify-content-between p-0">
+          <ul class="navbar-nav gap-2 mx-3 mx-lg-0 text-center h-100 justify-content-center justify-content-lg-end">
+            <li class="nav-item">
+                <a class="nav-link text-light" routerLink="/plants" routerLinkActive="active">
+                    <i class="bi bi-feather2"></i> Explorar plantas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" routerLink="/experts" routerLinkActive="active">
+                    <i class="bi bi-person-bounding-box"></i> Expertos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" routerLink="/about" routerLinkActive="active">
+                    <i class="bi bi-exclamation-circle"></i> Acerca de
+                </a>
+            </li>
+          </ul>
+
+          <div class="container-fluid d-lg-none" style="background-color: #12360e; color: #fff; font-size: small;">
+            <div class="row">
+              <div class="col col-lg-9 d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <p class="m-0 p-2 d-flex"><i class="bi bi-clock"></i>&nbsp;Abierto de 8am. a  6pm.</p>
+                <p class="m-0 p-2 d-flex"><i class="bi bi-envelope-open"></i>&nbsp;example&gmail.com</p>
+                <p class="m-0 p-2 d-flex"><i class="bi bi-telephone-outbound-fill"></i>&nbsp;+57 315 674 9584</p>
+              </div>
+              <div class="col col-lg-3 border-2 border-start d-flex align-items-center justify-content-center justify-content-lg-start gap-3" style="background-color: #e39921;">
+                <i class="bi bi-facebook"></i>
+                <i class="bi bi-twitter-x"></i>
+                <i class="bi bi-youtube"></i>
+                <i class="bi bi-whatsapp"></i>
+              </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+</nav>

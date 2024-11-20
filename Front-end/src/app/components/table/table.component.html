@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-between">
+    <button type="button" class="btn btn-success px-3" (click)="add()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="bi bi-plus-circle"></i> Agregar
+    </button>
+    <!-- <form role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+    </form> -->
+</div>
+
+<div class="table-responsive mt-3 bg-white rounded p-2 shadow-sm">
+    <!-- <select class="form-select form-select-sm" aria-label="Small select example">
+        <option *ngFor="let item of [].constructor(10); let i = index" [value]="i + 1">{{ i + 1 }}</option>
+    </select> -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th *ngFor="let field of fields | slice:0:3">{{ field.label }}</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr *ngFor="let item of data">
+                <td *ngFor="let field of fields | slice:0:3">{{ getNestedProperty(item, field.name) }}</td>
+                <td class="align-middle">
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-primary btn-sm" *ngIf="keysCount > 2" (click)="view(item.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="bi bi-binoculars"></i>
+                        </button>
+                        <button type="button" class="btn btn-warning btn-sm" (click)="edit(item.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="delete(item.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <app-pagination 
+        [currentPage]="currentPage"
+        [lastPage]="lastPage"
+        [offset]="offset"
+        [limit]="limit"
+        [total]="total"
+        (pageChange)="loadData($event)">
+    </app-pagination>
+
+</div>
+
+<app-modal 
+    [dataService]="dataService"
+    [relatedData]="relatedData"
+    [title]="title"
+    [modalMode]="modalMode"
+    [model]="item"
+    [fields]="fields"
+    [primaryKey]="primaryKey"
+    [folderImage]="folderImage"
+    (loadData)="loadData()">
+</app-modal>

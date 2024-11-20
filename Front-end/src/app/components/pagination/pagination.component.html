@@ -1,0 +1,21 @@
+<div class="d-block d-sm-flex justify-content-between">
+    <nav aria-label="Page navigation" *ngIf="lastPage > 1">
+        <ul class="pagination pagination-sm">
+            <li class="page-item" [class.disabled]="currentPage <= 1">
+                <button class="page-link" (click)="goToPage(currentPage - 1)" aria-label="Previous">Anterior</button>
+            </li>
+
+            <li class="page-item" *ngFor="let page of [].constructor(lastPage); let i = index"
+                [class.active]="currentPage === i + 1">
+                <button class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</button>
+            </li>
+
+            <li class="page-item" [class.disabled]="currentPage >= lastPage">
+                <button class="page-link" (click)="goToPage(currentPage + 1)" aria-label="Next">Siguiente</button>
+            </li>
+        </ul>
+    </nav>
+    <p class="text-success" *ngIf="lastPage > 1">
+        Mostrando {{offset + 1}} a {{limit}} de {{ total }} {{ total > 1 ? 'entradas' : 'entrada'}}
+    </p>
+</div>

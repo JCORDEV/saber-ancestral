@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body class="d-flex min-vh-100 justify-content-center align-items-center">
+    <div class="shadow-lg rounded p-4">
+        <!-- <h2 class="fw-bold text-center mb-3">Autorización</h2> -->
+        <div class="lh-1 fs-4 mb-3 text-center">
+            <i class="bi bi-feather"></i>
+            <p class="m-0 fw-bold">Saber ancestral</p>
+            <p class="fs-6 m-0 text-secondary">administración</p>
+        </div>
+        <form [formGroup]="modelForm" (ngSubmit)="onLogin()" class="d-flex flex-column gap-3 flex-wrap">
+          <div class="flex-fill">
+            <small class="badge text-bg-success mb-1">Usuario</small>
+            <input type="text" class="form-control form-control-sm border-2 border-success border-opacity-50" id="username" required formControlName="username" autofocus>
+            <div class="badge text-bg-danger mt-2 w-100 text-start" [hidden]="modelForm.get('username')?.valid || modelForm.get('username')?.pristine">
+                <small class="d-block" *ngIf="modelForm.get('username')?.hasError('required')">Este campo es requerido.</small>
+            </div>
+          </div>
+          <div class="flex-fill">
+            <small class="badge text-bg-success mb-1">Contraseña</small>
+            <input type="password" class="form-control form-control-sm border-2 border-success border-opacity-50" id="password"  formControlName="password">
+            <div class="badge text-bg-danger mt-2 w-100 text-start" [hidden]="modelForm.get('password')?.valid || modelForm.get('password')?.pristine">
+                <small class="d-block" *ngIf="modelForm.get('password')?.hasError('required')">Este campo es requerido.</small>
+            </div>
+          </div>
+            <button type="submit" class="btn btn-success" [disabled]="modelForm.invalid">
+                <i class="bi bi-door-open"></i> Autorizar
+            </button>
+        </form>
+        <div class="badge text-bg-danger mt-2 w-100 text-start" *ngIf="errorMessage">
+            <small class="d-block" >{{ errorMessage }}</small>
+        </div>
+    </div>
+</body>
+</html>

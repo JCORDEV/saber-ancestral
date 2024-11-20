@@ -1,0 +1,48 @@
+<div class="d-flex flex-column min-vh-100">
+    <app-navbar></app-navbar>
+
+    <main class="d-lg-flex py-3 px-3 px-sm-5 flex-grow-1">
+        <div class="col-12 col-lg-3 pe-0 pe-lg-5">
+            <app-filter-options
+                [filter]="categories"
+                (filterChange)="onFilterChange($event)">
+            </app-filter-options>
+        </div>
+        <div class="col-12 col-lg-9 pt-4 pt-lg-0">
+            <div class="col d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                <div class="card-custom" data-bs-toggle="modal" data-bs-target="#exampleModal" *ngFor="let plant of plants" (click)="view(plant.id)">
+                  <div class="wrapper">
+                    <img src="http://localhost:3000/images/plants/{{ plant.image }}" alt="" class="cover-image">
+                  </div>
+                  <h3 class="title px-1 lh-sm text-break">{{ plant.common_name }}</h3>
+                  <p class="character">
+                      {{ plant.description }}
+                  </p>
+                </div>
+            </div>
+
+            <div *ngIf="plants.length < 1" class="text-center mt-5">
+                <i class="bi bi-database-fill-slash fs-2 text-muted"></i>
+                <p class="no-results-text fs-5 text-muted">No se encontraron plantas, prueba ajustar tu búsqueda.</p>
+              </div>
+            
+            <div class="col pt-4">
+                <app-pagination 
+                    [currentPage]="currentPage"
+                    [lastPage]="lastPage"
+                    [offset]="offset"
+                    [limit]="limit"
+                    [total]="total"
+                    (pageChange)="loadPlants($event)">
+                </app-pagination>
+            </div>
+        </div>
+    </main>
+    <app-modal-client
+        [title]="plant.common_name"
+        [data]="plant"
+        [imageSrc]="'http://localhost:3000/images/plants/' + plant?.image"
+        [fields]="fields"
+        >
+    </app-modal-client>
+</div>

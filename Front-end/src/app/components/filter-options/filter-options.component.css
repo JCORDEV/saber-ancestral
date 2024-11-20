@@ -1,0 +1,42 @@
+.category {
+    position: sticky;
+    top: 1rem;
+    width: 100%;
+    height: fit-content;
+    /* margin: 0 3rem; */
+    background-color: #9fc26f;
+    border-radius: 0.375rem;
+}
+
+.form-control{
+    border: 1px solid transparent;
+}
+
+.form-control:focus {
+    box-shadow: transparent 0px 0px 0px;
+    border: 1px solid transparent;
+}
+
+
+.form-check-input {
+    border-radius: 87% 13% 48% 52% / 68% 0% 100% 32%  !important;
+}
+
+.form-check-input:active {
+    background-color: #4d81034f !important;
+}
+
+.form-check-input:checked {
+    background-color: #4d8103 !important;
+    border: #4d8103 !important;
+}
+
+.form-check-label:has(.form-check-input:checked) {
+    text-decoration: #4d8103 line-through;
+}
+  
+
+.form-check-input:focus {
+    box-shadow: transparent 0px 0px 0px;
+    border: #4d8103 !important;
+}

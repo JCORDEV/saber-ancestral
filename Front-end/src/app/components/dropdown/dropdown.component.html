@@ -1,0 +1,38 @@
+<div class="mb-3">
+    <div class="dropdown" *ngIf="modalMode !== 'view'">
+        <button class="form-select w-100 text-start form-select-sm" type="button" data-bs-toggle="dropdown">
+            Seleccionar {{ label | lowercase }}
+        </button>
+        <ul class="dropdown-menu w-100 p-2">
+            <input type="text" class="form-control mb-2" placeholder="Buscar..." [(ngModel)]="searchTerm"/>
+
+            <li>
+                <div class="form-check">
+                    <label class="form-check-label w-100" for="selectAll">
+                        <input class="form-check-input" type="checkbox" id="selectAll" [checked]="areAllSelected()"
+                            (change)="toggleSelectAll()">
+                        {{ areAllSelected() ? 'Deseleccionar Todos' : 'Seleccionar Todos' }}
+                    </label>
+                </div>
+                <hr>
+            </li>
+
+            <!-- Listar los ítems relacionados -->
+            <li *ngFor="let item of relatedItems" [hidden]="!item[displayField].toLowerCase().includes(searchTerm.toLowerCase())">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="item.selected"
+                        (change)="onSelectionChange(item)" *ngIf="modalMode !== 'view'">
+                    <label class="form-check-label">{{ item[displayField] }}</label>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Visualización en modo "view" -->
+    <div>
+        <span *ngFor="let item of relatedItems">
+            <span class="badge bg-dark me-1">{{ item.selected &&  modalMode !== 'add' ? item[displayField]:'' }}</span>
+        </span>
+    </div>
+   
+</div>

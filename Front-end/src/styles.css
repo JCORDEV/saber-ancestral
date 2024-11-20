@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap');
+        
+*{
+    font-family: "Space Grotesk", sans-serif;
+}
+
+html, body {
+    height: auto;
+    overflow: auto;
+}
+
+main {
+    background-color: #e2ffd1;
+}
+
+.pagination{
+    --bs-pagination-active-border-color: #198754 !important;
+    --bs-pagination-active-bg: #198754 !important;
+    --bs-pagination-active-color: #fff !important;
+    --bs-pagination-color: #198754 !important;
+    --bs-pagination-hover-color: #198754 !important;
+    --bs-pagination-focus-color: #198754 !important;
+    --bs-pagination-focus-box-shadow: 0 0 0 0 !important;
+}

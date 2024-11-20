@@ -1,0 +1,11 @@
+<div class="category">
+    <form class="d-flex" role="search">
+        <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" (input)="onSearchChange($event)">
+    </form>
+    <div class="form-check" *ngFor="let item of filter">
+        <label class="form-check-label w-100 px-3 py-1" role="button" for="flexCheckChecked{{ item.name }}">
+            <input class="form-check-input" type="checkbox" role="button" value="{{ item.id }}" id="flexCheckChecked{{ item.name }}" (change)="onCategoryChange(item.id, $event)">
+            <span class="text-break">{{ item.name }}</span>
+        </label>
+    </div>
+</div>

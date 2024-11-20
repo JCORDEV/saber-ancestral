@@ -1,0 +1,118 @@
+*{
+    --color-tertiary: #ffbf00;
+    --card-height: 350px;
+    --card-width: calc(var(--card-height) / 1.5)
+}
+
+.card-custom {
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 36px;
+    perspective: 2500px;
+    /* margin: 0 50px; */
+    border-radius: 5px;
+    transition: all .5s;
+    border: rgba(67, 40, 1, 0.848) dashed 2px;
+    overflow: hidden;
+}
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all .5s;
+}
+
+.wrapper {
+    /* position: absolute; */
+    /* left: 0; */
+    /* width: 100%; */
+    width: var(--card-width);
+    height: var(--card-height);
+    border-radius: 5px;
+    /* overflow: hidden; */
+    /* z-index: -1; */
+}
+
+.wrapper::before,
+.wrapper::after {
+    content: '';
+    opacity: 0;
+    width: 100%;
+    height: 40%;
+    transition: all .5s;
+    position: absolute;
+    left: 0;
+}
+
+.wrapper::before {
+    top: 0;
+    height: 100%;
+    /* background-image: linear-gradient(to top, transparent 4%, rgb(12, 13, 19, .5) 68%, rgb(12, 13, 19) 97%); */
+}
+
+.wrapper::after {
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(to bottom, transparent 6%, rgb(49, 29, 1, .7) 68%, rgb(49, 29, 1) 97%);
+}
+
+.title {
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    transition: top .5s;
+    text-align: center;
+}
+
+.character {
+    position: absolute;
+    color: #fff;
+    opacity: 0;
+    transition: all .5s;
+    text-align: center;
+    padding: 2px;
+    text-wrap: pretty;
+    overflow: hidden;
+}
+
+.card-custom:hover {
+    transform: perspective(900px) translateY(-2%) rotateX(8deg) translateZ(0);
+    box-shadow: 0px 35px 32px -8px rgb(49, 29, 1, .75);
+}
+
+.card-custom:hover .title {
+    opacity: 0;
+    /* top: 0; */
+    /* transform: translate3d(0%, 0%, 100px) translateZ(0); */
+}
+
+.card-custom:hover .cover-image {
+    filter: blur(2px);
+}
+
+.card-custom:hover .wrapper::after,
+.wrapper::before {
+    opacity: 1;
+}
+
+.card-custom:hover .wrapper::after {
+    height: 100%;
+    background-image: linear-gradient(to bottom, transparent, rgb(49, 29, 1, .5) 18%, rgb(49, 29, 1) 97%);
+}
+
+.card-custom:hover .wrapper::before {
+    opacity: 1;
+}
+
+.card-custom:hover .character {
+    opacity: 1;
+    /* bottom: 0; */
+    /* margin: 1rem; */
+    /* transform: translate3d(0%, 0%, -100px); */
+}
